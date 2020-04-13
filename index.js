@@ -45,7 +45,7 @@ wss.on("connection", function connection(ws) {
       case "media":
         // Write Media Packets to the rcognize stream
         recognizeStream.write(msg.media.payload);
-        console.log(`Receiving Audio...`);
+        // console.log(`Receiving Audio...`);
         break;
       case "stop":
         console.log(`Call Has Ended`);
