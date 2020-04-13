@@ -4,6 +4,21 @@ const app = express();
 const server = require("http").createServer(app);
 const wss = new WebSocket.Server({ server });
 
+// Include Google Speect To Text
+const speech = require('@google-cloud/speech');
+const client = new speech.SpeechClient();
+
+
+// Configure Transcription Request
+const request = {
+  config: {
+    encoding: "MULAW",
+    sampleRateHertz: 8000,
+    languageCode: "en-US"
+  },
+  interimResults: true
+};
+
 // Handle Web Socket Connection
 wss.on("connection", function connection(ws) {
   console.log("New Connection Initiated");
